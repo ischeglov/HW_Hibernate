@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -16,6 +17,16 @@ public class PersonService {
 
     @Transactional
     public List<Person> getPersonsByCity(String city) {
-        return personRepository.getPersonsByCity(city);
+        return personRepository.findPersonByCity(city);
+    }
+
+    @Transactional
+    public List<Person> getPersonsByAgeLess(int age) {
+        return personRepository.findPersonByContactAgeLessThanOrderByContactAge(age);
+    }
+
+    @Transactional
+    public Optional<Person> getPersonByNameAndSurname(String name, String surname) {
+        return personRepository.findFirstPersonByContactNameAndContactSurname(name,surname);
     }
 }

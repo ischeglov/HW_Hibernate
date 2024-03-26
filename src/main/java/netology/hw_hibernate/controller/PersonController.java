@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -19,5 +20,16 @@ public class PersonController {
     @GetMapping("/persons/by-city")
     public List<Person> getPersonsByCity(@RequestParam(value = "city", required = false) String city) {
         return personService.getPersonsByCity(city);
+    }
+
+    @GetMapping("/persons/by-age")
+    public List<Person> getPersonsByAgeLess(@RequestParam(value = "age", required = false) int age) {
+        return personService.getPersonsByAgeLess(age);
+    }
+
+    @GetMapping("/persons/by-name")
+    public Optional<Person> getPersonByNameAndSurname(@RequestParam(value = "name", required = false) String name,
+                                                      @RequestParam(value = "surname", required = false) String surname) {
+        return personService.getPersonByNameAndSurname(name, surname);
     }
 }
