@@ -5,7 +5,7 @@ import netology.hw_hibernate.entity.Person;
 import netology.hw_hibernate.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
